@@ -24,14 +24,11 @@ const server: Server = http.createServer(
 
       req.on("end", () => {
         const parsedBody = JSON.parse(body);
-        console.log(body);
-      });
+        console.log(parsedBody);
+        console.log("okay ts node dev working");
 
-      res.end(
-        JSON.stringify({
-          message: "okay now....",
-        })
-      );
+        res.end(JSON.stringify(parsedBody));
+      });
     }
   }
 );
