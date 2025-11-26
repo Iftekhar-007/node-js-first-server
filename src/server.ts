@@ -1,4 +1,5 @@
 import http, { IncomingMessage, Server, ServerResponse } from "http";
+import config from "./config";
 // import path from "path";
 const server: Server = http.createServer(
   (req: IncomingMessage, res: ServerResponse) => {
@@ -13,9 +14,28 @@ const server: Server = http.createServer(
         })
       );
     }
+
+    if (req.url == "/api/users" && req.method == "POST") {
+      let body = "";
+
+      req.on("data", (chunk) => {
+        body += chunk.toString();
+      });
+
+      req.on("end", () => {
+        const parsedBody = JSON.parse(body);
+        console.log(body);
+      });
+
+      res.end(
+        JSON.stringify({
+          message: "okay now....",
+        })
+      );
+    }
   }
 );
 
-server.listen(5000, () => {
-  console.log(`server is running on ${5000}`);
+server.listen(config.port, () => {
+  console.log(`server is running on ${config.port}`);
 });
