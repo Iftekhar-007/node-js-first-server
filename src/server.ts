@@ -34,5 +34,5 @@ const server: Server = http.createServer(
 );
 
 server.listen(config.port, () => {
-  console.log(`server is running on ${config.port}`);
+  console.log(`server is running  ${config.port}`);
 });
