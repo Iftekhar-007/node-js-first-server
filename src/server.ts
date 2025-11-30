@@ -21,7 +21,7 @@ const server: Server = http.createServer(
       res.end(
         JSON.stringify({
           success: false,
-          message: "Not found routes for this url",
+          message: "Not found routes for this url okay",
           path: path,
         })
       );
